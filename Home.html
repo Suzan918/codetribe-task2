@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suzan Magabe | Python Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Suzan Magabe</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="page">
+            <div class="hero">
+                <div class="hero-image">
+                    <video src="./video/status.mp4" controls autoplay muted loop alt="Hero Video"></video>
+                </div>
+                
+                <img src="./image/suzan.jpg" alt="Profile Photo" class="profile-image">
+                
+                <div class="bio">
+                    <h1>Suzan Magabe</h1>
+                    <p>Hello! I'm a passionate Python and web developer with an experience creating beautiful and functional websites. I specialize in front-end development and user experience design.</p>
+                    <p>A passionate tech enthusiast transforming innovative ideas into elegant code. With a strong foundation in Python development and frontend technologies, I'm dedicated to creating impactful digital solutions that bridge creativity and technical excellence.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="page" style="display: none;">
+            <div class="page-content">
+                <h2>About Me</h2>
+                <p>My tech journey began with the GirlCode Hackathon in 2023, igniting a passion for solving real-world challenges through technology. As a Power Learn Project scholar, I've developed comprehensive skills in Python, software engineering, and web technologies. Currently an AI Trainee at Scaler AI, I'm committed to continuous learning and pushing the boundaries of technological innovation.</p>
+                                
+                <ul>
+                    <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                    <li>Python</li>
+                    <li>Node.js and Express for backend development</li>
+                    <li>Responsive and accessible design principles</li>
+                    <li>Version control with Git</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="page" style="display: none;">
+            <div class="page-content">
+                <h2>Contact Me</h2>
+                <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit">Send Message</button>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Other Ways to Reach Me</h3>
+                    <p><i class="fas fa-envelope"></i> Email: sephulesuzan8@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> Phone: +27 65 500 6892</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 1426 Moreku Street</p>
+                <p>Springs Gauteng, South Africa</p>
+                <p>1575</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home"><i class="fas fa-home"></i> Home</a>
+                <a href="#about"><i class="fas fa-user"></i> About Me</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Me</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/hazel.magabe.5" aria-label="Facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                </div>
+                <p><i class="fas fa-phone"></i> Phone: +27 65 500 6892</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Suzan Magabe. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('nav a').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                
+                // Add active class to current link
+                this.classList.add('active');
+                
+                document.querySelectorAll('.page').forEach(page => {
+                    page.style.display = 'none';
+                });
+                
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).style.display = 'block';
+                
+                // Close mobile menu if open
+                document.querySelector('nav ul').classList.remove('active');
+                document.querySelector('.hamburger').classList.remove('active');
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        // Show home page by default
+        document.getElementById('home').style.display = 'block';
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('nav') && !e.target.closest('.hamburger')) {
+                document.querySelector('nav ul').classList.remove('active');
+                document.querySelector('.hamburger').classList.remove('active');
+            }
+        });
+        
+        // Add header scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('header').classList.add('scrolled');
+            } else {
+                document.querySelector('header').classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
